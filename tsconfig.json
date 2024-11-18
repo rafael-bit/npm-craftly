@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"lib": [
+			"dom",
+			"esnext"
+		],
+		"jsx": "react-jsx",
+		"strict": true,
+		"moduleResolution": "node",
+		"baseUrl": ".",
+		"paths": {
+			"@components/*": [
+				"src/components/*"
+			]
+		},
+		"esModuleInterop": true,
+		"skipLibCheck": true
+	}
+}
