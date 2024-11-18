@@ -5,6 +5,7 @@ interface ButtonProps {
 	children: React.ReactNode;
 	variant?: 'primary' | 'secondary' | 'outline' | 'danger';
 	size?: 'sm' | 'md' | 'lg';
+	disabled?: boolean;
 	onClick?: () => void;
 }
 
@@ -12,9 +13,10 @@ export const Button: React.FC<ButtonProps> = ({
 	children,
 	variant = 'primary',
 	size = 'md',
+	disabled = false,
 	onClick,
 }) => {
-	const baseStyle = 'rounded font-medium px-4 py-2 focus:outline-none';
+	const baseStyle = 'rounded font-medium px-4 py-2 focus:outline-none transition-all';
 	const variantStyles = {
 		primary: 'bg-blue-500 text-white hover:bg-blue-600',
 		secondary: 'bg-gray-500 text-white hover:bg-gray-600',
@@ -27,10 +29,18 @@ export const Button: React.FC<ButtonProps> = ({
 		lg: 'text-lg py-3 px-6',
 	};
 
+	const disabledStyles = 'opacity-50 cursor-not-allowed';
+
 	return (
 		<button
-			className={clsx(baseStyle, variantStyles[variant], sizeStyles[size])}
+			className={clsx(
+				baseStyle,
+				variantStyles[variant],
+				sizeStyles[size],
+				disabled && disabledStyles
+			)}
 			onClick={onClick}
+			disabled={disabled}
 		>
 			{children}
 		</button>
