@@ -1,7 +1,17 @@
 {
   "name": "craftly",
-  "version": "1.0.1",
-  "main": "index.ts",
+  "version": "1.0.2",
+  "main": "src/index.ts",
+  "exports": {
+    "./Button": "./src/components/Button.js",
+    "./Card": "./src/components/Card.js",
+    "./Checkbox": "./src/components/Checkbox.js",
+    "./Input": "./src/components/Input.js",
+    "./Modal": "./src/components/Modal.js",
+    "./Navbar": "./src/components/Navbar.js",
+    "./Badge": "./src/components/Badge.js",
+    "./Table": "./src/components/Table.js"
+  },
   "scripts": {
     "test": "jest --watch",
     "build": "tsc"
@@ -26,7 +36,10 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   },
+  "types": "src/index.d.ts",
   "dependencies": {
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

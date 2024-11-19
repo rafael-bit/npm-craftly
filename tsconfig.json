@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es5",
+		"target": "ES6",
 		"lib": [
 			"dom",
 			"esnext"
@@ -9,6 +9,8 @@
 		"strict": true,
 		"moduleResolution": "node",
 		"baseUrl": ".",
+		"outDir": "src",
+		"declaration": true,
 		"paths": {
 			"craftly/*": [
 				"src/components/*"
@@ -16,5 +18,12 @@
 		},
 		"esModuleInterop": true,
 		"skipLibCheck": true
-	}
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		"dist"
+	]
 }
