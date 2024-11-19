@@ -1,6 +1,6 @@
 {
   "name": "craftly",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "src/index.ts",
   "exports": {
     "./Button": "./src/components/Button.js",
@@ -38,8 +38,6 @@
   },
   "types": "src/index.d.ts",
   "dependencies": {
-    "clsx": "^2.1.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "clsx": "^2.1.1"
   }
 }

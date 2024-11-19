@@ -1,17 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var jsx_runtime_1 = require("react/jsx-runtime");
-var react_1 = require("@testing-library/react");
-var Card_1 = require("../Card");
-describe('Card Component', function () {
-    it('applies the correct variant styles', function () {
-        (0, react_1.render)((0, jsx_runtime_1.jsx)(Card_1.Card, { variant: "shadow", children: "Test Card" }));
-        var card = react_1.screen.getByText('Test Card').closest('div');
-        expect(card).toHaveClass('shadow-md');
+import { jsx as _jsx } from "react/jsx-runtime";
+import { render, screen } from '@testing-library/react';
+import { Card } from '../Card';
+describe('Card', () => {
+    it('renders children correctly', () => {
+        render(_jsx(Card, { children: "Card Content" }));
+        expect(screen.getByText('Card Content')).toBeInTheDocument();
     });
-    it('renders without errors', function () {
-        (0, react_1.render)((0, jsx_runtime_1.jsx)(Card_1.Card, { children: "Test Card" }));
-        var card = react_1.screen.getByText('Test Card');
-        expect(card).toBeInTheDocument();
+    it('applies correct variant styles', () => {
+        render(_jsx(Card, { variant: "shadow", children: "Shadow Card" }));
+        expect(screen.getByText('Shadow Card')).toHaveClass('shadow-md');
     });
 });

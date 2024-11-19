@@ -5,17 +5,21 @@
 			"dom",
 			"esnext"
 		],
+		"types": [
+			"@testing-library/jest-dom"
+		],
 		"jsx": "react-jsx",
 		"strict": true,
 		"moduleResolution": "node",
 		"baseUrl": ".",
-		"outDir": "src",
 		"declaration": true,
 		"paths": {
 			"craftly/*": [
 				"src/components/*"
 			]
 		},
+		"resolveJsonModule": true,
+		"allowJs": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true
 	},

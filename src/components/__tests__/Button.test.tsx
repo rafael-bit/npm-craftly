@@ -1,30 +1,24 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Button } from '../Button';
 
-describe('Button Component', () => {
-	it('renders the button with correct text', () => {
+describe('Button', () => {
+	it('renders with default styles', () => {
 		render(<Button>Click Me</Button>);
-		expect(screen.getByText('Click Me')).toBeInTheDocument();
+		const button = screen.getByText('Click Me');
+		expect(button).toHaveClass('bg-blue-500');
 	});
 
-	it('applies the correct variant styles', () => {
-		render(<Button variant="outline">Outline Button</Button>);
-		const button = screen.getByText('Outline Button');
-		expect(button).toHaveClass('border', 'text-gray-700');
-	});
-
-	it('calls onClick handler when clicked', () => {
-		const onClickMock = jest.fn();
-		render(<Button onClick={onClickMock}>Click Me</Button>);
-
+	it('executes onClick when clicked', () => {
+		const handleClick = jest.fn();
+		render(<Button onClick={handleClick}>Click Me</Button>);
 		fireEvent.click(screen.getByText('Click Me'));
-		expect(onClickMock).toHaveBeenCalledTimes(1);
+		expect(handleClick).toHaveBeenCalledTimes(1);
 	});
 
-	it('is disabled when the disabled prop is set', () => {
-		render(<Button disabled>Disabled Button</Button>);
-		const button = screen.getByText('Disabled Button');
+	it('disables button', () => {
+		render(<Button disabled>Click Me</Button>);
+		const button = screen.getByText('Click Me');
 		expect(button).toBeDisabled();
-		expect(button).toHaveClass('opacity-50');
+		expect(button).toHaveClass('opacity-50 cursor-not-allowed');
 	});
 });

@@ -1,18 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { Card } from '../Card';
 
-describe('Card Component', () => {
-	it('applies the correct variant styles', () => {
-		render(<Card variant="shadow">Test Card</Card>);
-
-		const card = screen.getByText('Test Card').closest('div');
-		expect(card).toHaveClass('shadow-md');
+describe('Card', () => {
+	it('renders children correctly', () => {
+		render(<Card>Card Content</Card>);
+		expect(screen.getByText('Card Content')).toBeInTheDocument();
 	});
 
-	it('renders without errors', () => {
-		render(<Card>Test Card</Card>);
-
-		const card = screen.getByText('Test Card');
-		expect(card).toBeInTheDocument();
+	it('applies correct variant styles', () => {
+		render(<Card variant="shadow">Shadow Card</Card>);
+		expect(screen.getByText('Shadow Card')).toHaveClass('shadow-md');
 	});
 });
