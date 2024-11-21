@@ -1,6 +1,6 @@
 {
   "name": "craftly",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "main": "src/index.ts",
   "exports": {
     "./Button": "./src/components/Button.js",
@@ -22,14 +22,10 @@
   "description": "",
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.0.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.9.0",
     "@types/react": "^18.3.12",
-    "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "next": "^15.0.3",
-    "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.15",
     "ts-jest": "^29.2.5",

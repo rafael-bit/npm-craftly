@@ -1,51 +1,63 @@
-import React from 'react';
-import clsx from 'clsx';
+import React from "react";
+import clsx from "clsx";
 
 interface TableProps {
+	variant?: "default" | "striped" | "bordered";
+	data: Array<{ [key: string]: string | number }>;
 	headers: string[];
-	data: string[][];
-	variant?: 'default' | 'striped' | 'bordered';
 }
 
-export const Table: React.FC<TableProps> = ({ headers, data, variant = 'default' }) => {
-	const baseStyle = 'min-w-full border-collapse';
-	const variantStyles = {
-		default: '',
-		striped: 'odd:bg-gray-50',
-		bordered: 'border border-gray-300',
-	};
-
+const Table: React.FC<TableProps> = ({ variant = "default", data, headers }) => {
 	return (
-		<table className={clsx(baseStyle, variantStyles[variant])}>
-			<thead>
-				<tr>
-					{headers.map((header, index) => (
-						<th
-							key={index}
-							className="border border-gray-300 bg-gray-100 px-4 py-2 text-left"
-						>
-							{header}
-						</th>
-					))}
-				</tr>
-			</thead>
-			<tbody>
-				{data.map((row, rowIndex) => (
-					<tr key={rowIndex} className={clsx(variant === 'striped' && 'odd:bg-gray-50')}>
-						{row.map((cell, cellIndex) => (
-							<td
-								key={cellIndex}
-								className={clsx(
-									'px-4 py-2',
-									variant === 'bordered' && 'border border-gray-300'
-								)}
+		<div className="overflow-x-auto">
+			<table
+				className={clsx(
+					"min-w-full table-auto text-left text-sm",
+					"border-collapse border-spacing-0",
+					variant === "bordered" && "border border-gray-300 dark:border-gray-700",
+					"text-gray-800 dark:text-gray-100"
+				)}
+			>
+				<thead>
+					<tr
+						className={clsx(
+							"bg-gray-100 dark:bg-gray-950",
+							variant === "bordered" && "border-b border-gray-300 dark:border-gray-700"
+						)}
+					>
+						{headers.map((header, index) => (
+							<th
+								key={index}
+								className="px-4 py-2 text-sm font-semibold tracking-wide"
 							>
-								{cell}
-							</td>
+								{header}
+							</th>
 						))}
 					</tr>
-				))}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{data.map((row, rowIndex) => (
+						<tr
+							key={rowIndex}
+							className={clsx(
+								"hover:bg-gray-50 dark:hover:bg-gray-800",
+								variant === "striped" &&
+								rowIndex % 2 === 0 &&
+								"bg-gray-50 dark:bg-gray-900",
+								variant === "bordered" && "border-b border-gray-300 dark:border-gray-800"
+							)}
+						>
+							{headers.map((header, colIndex) => (
+								<td key={colIndex} className="px-4 py-2">
+									{row[header]}
+								</td>
+							))}
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
 	);
 };
+
+export default Table;
